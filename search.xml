@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>my first blog</title>
-    <url>/2022/06/22/my-first-blog/</url>
-    <content><![CDATA[<p>这里记录我的生命以及神明</p>
-]]></content>
+    <title>仲夏夜</title>
+    <url>/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/</url>
+    <content><![CDATA[<h1 id="仲夏夜之梦"><a href="#仲夏夜之梦" class="headerlink" title="仲夏夜之梦"></a>仲夏夜之梦</h1>]]></content>
+      <categories>
+        <category>欲赋新词</category>
+      </categories>
       <tags>
         <tag>life</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>test theme</title>
-    <url>/2022/06/22/test-theme/</url>
-    <content><![CDATA[<p>测试新主题</p>
-]]></content>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2022/06/22/test/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>

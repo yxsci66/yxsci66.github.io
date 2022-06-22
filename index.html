@@ -114,7 +114,7 @@
                             <div id="sidebar" class="float-right">
     <a href="/" rel="home">
         <v-avatar size=96>
-            <img id="logo" src="/images/avatar.webp">     
+            <img id="logo" src="/images/avatar.jpg">     
         </v-avatar> 
     </a>
     <v-divider></v-divider>
@@ -154,7 +154,7 @@
             <v-list-item href="https://yxsci66.github.io/" link>
             <v-list-item-icon><v-icon>rss_feed</v-icon></v-list-item-icon>
             <v-list-item-content>
-                我的博客
+                博客
             </v-list-item-content>
             </v-list-item>
         
@@ -162,6 +162,18 @@
     <v-divider></v-divider>
     
         <v-list id="sub-menu" class="font-weight-medium" dense>
+            
+                
+                    <v-list-item href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>欲赋新词</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
             
         </v-list>    
     
@@ -191,8 +203,8 @@
             <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
             <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
             <span>
-                &copy; 2015 - 2022 
-                yx
+                &copy; 2022 - 2022 
+                yxsci66
             </span>
         </div>
     </div>
@@ -267,84 +279,6 @@
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/test/ >test</a>
-                  </span>
-                
-              </v-card>
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/2022/06/22/test-theme/">未分类></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2022/06/22/test-theme/">test theme</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          测试新主题
-
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2022/06/22/test-theme/">阅读更多</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2022-06-22
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/2022/06/22/test/">未分类></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2022/06/22/test/">test</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2022/06/22/test/">阅读更多</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2022-06-22
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
                     <a rel="tag" href = /tags/life/ >life</a>
                   </span>
                 
@@ -354,21 +288,20 @@
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/2022/06/22/my-first-blog/">未分类></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/">欲赋新词></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2022/06/22/my-first-blog/">my first blog</a>
+        <a class="index-article-header-title font-weight-medium" href="/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/">仲夏夜</a>
       </div>
       
       <div class="index-article-content">
         
-          这里记录我的生命以及神明
-
+          仲夏夜之梦
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2022/06/22/my-first-blog/">阅读更多</v-btn>
+        <v-btn text href="/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -380,7 +313,7 @@
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">
                                     <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
-                                    <span> &copy; 2015 - 2022 yx</span>
+                                    <span> &copy; 2022 - 2022 yxsci66</span>
                                 </div>
                             </div>                   
                         </v-col>                                            
