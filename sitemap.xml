@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://yxsci66.github.io/tags/index.html</loc>
+    
+    <lastmod>2022-06-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yxsci66.github.io/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/</loc>
     
     <lastmod>2022-06-22</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>https://yxsci66.github.io/search/index.html</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yxsci66.github.io/tags/index.html</loc>
     
     <lastmod>2022-06-22</lastmod>
     
@@ -54,6 +54,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://yxsci66.github.io/tags/encrypt/</loc>
+    <lastmod>2022-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://yxsci66.github.io/tags/life/</loc>

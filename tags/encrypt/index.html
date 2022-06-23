@@ -39,14 +39,10 @@
     
     
     
-        
-    
-
-    
     
     <title>
-        
-            tags | 我看了两回
+          
+            我看了两回
         
     </title>
     
@@ -209,55 +205,29 @@
   </v-col>
 </v-row>
 
-                            <v-card class="elevation-2 post-card">
-    <div class="post-header">
-        <a class="post-header-title font-weight-medium" href="/tags/index.html">标签</a>
-    </div>
-    <div class="post-content typo">
+                            <v-card class="elevation-2 index-card">
+    <v-timeline class="timeline" dense>
+        <v-timeline-item class="timeline-header" color="secondary lighten-2">
+            <span class="timeline-title">encrypt</span>
+            <span class="timeline-subtitle">标签</span>
+        </v-timeline-item>
         
-            <div class="page-describe">
-                counter.tags
-            </div>
-            <div class="tags-contain">
-                
-                    <v-badge :value="tagHover" transition="slide-x-transition" inline content="1" >
-                        <v-hover v-model="tagHover">
-                            <v-chip color="secondary" class="tags-chip font-weight-medium">
-                                <a href="/tags/encrypt/">encrypt</a>
-                            </v-chip>
-                        </v-hover>
-                    </v-badge>
-                
-                    <v-badge :value="tagHover" transition="slide-x-transition" inline content="1" >
-                        <v-hover v-model="tagHover">
-                            <v-chip color="secondary" class="tags-chip font-weight-medium">
-                                <a href="/tags/life/">life</a>
-                            </v-chip>
-                        </v-hover>
-                    </v-badge>
-                
-            </div>
+            <v-timeline-item fill-dot small color="secondary lighten-2">
+                <div class="timeline-item-post d-none d-md-block">
+                    <span class="timeline-item-time">2022.06.23</span>
+                    <a href="/2022/06/23/encrypt/" class="timeline-item-title">encrypt</a>
+                </div>
+                <div class="timeline-item-post-mobile d-block d-md-none">
+                    <span class="timeline-item-time">2022.06.23</span><br>
+                    <a href="/2022/06/23/encrypt/" class="timeline-item-title">encrypt</a>
+                </div>
+                <v-divider></v-divider>
+            </v-timeline-item>
         
-    </div>
+    </v-timeline>
 </v-card>
 
-    <v-card class="comment-card elevation-2">
-        <v-tabs v-model="commentTab"  id="comment-tabs" active-class="active-comment-tab">
-            
-                <v-tab><span id="comment-tab-0">livere</span></v-tab>
-            
-        </v-tabs>
-        <v-tabs-items v-model="commentTab" id="tabs-content" data=eyJ1c2UiOlsibGl2ZXJlIl0sImdpdGFsa19jbGllbnRfaWQiOm51bGwsImdpdGFsa19jbGllbnRfc2VjcmV0IjpudWxsLCJnaXRhbGtfcmVwbyI6bnVsbCwiZ2l0YWxrX293bmVyIjpudWxsLCJnaXRhbGtfc2lkX3R5cGUiOm51bGwsImdpdGFsa19kaXN0cmFjdGlvbkZyZWVNb2RlIjp0cnVlLCJkaXNxdXNfc2hvcnRuYW1lIjpudWxsLCJsaXZlcmVfZGF0YV91aWQiOiJNVEF5TUM4MU5qWTFNQzh6TXpFeE5BPT0iLCJ2YWxpbmVfbGVhbmNsb3VkX2FwcF9pZCI6InRUTlNlNVNuTGpNeVhUYmtyUmNWVFhNTy1NZFlYYk1NSSIsInZhbGluZV9sZWFuY2xvdWRfYXBwX2tleSI6IkpzN0VqQU15TG1Vc3pmclRKcmdCbkx3ciIsImNoYW5neWFuX2FwcF9pZCI6bnVsbCwiY2hhbmd5YW5fYXBwX2tleSI6bnVsbCwiY2hhbmd5YW5fc2lkX3R5cGUiOm51bGx9 >
-            
-                <v-tab-item eager=true>
-                    
-                        <div id="lv-container" data-id="city" data-uid="MTAyMC81NjY1MC8zMzExNA=="></div>
-                    
-                </v-tab-item>
-            
-        </v-tabs-items>
-    </v-card>
-        
+         
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">
