@@ -46,7 +46,7 @@
     
     <title>
         
-            categories | 我看了两回
+            encrypt | 我看了两回
         
     </title>
     
@@ -109,21 +109,12 @@
     </v-list>
     <v-divider></v-divider>
     
-        <v-list id="sub-menu" class="font-weight-medium" dense>
-            
+        <div class="post-toc">
+            <a href="/2022/06/23/encrypt/" class="toc-header">文章目录</a>
+            <div class="toc-content">
                 
-                    <v-list-item href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
-                            <v-hover v-model="menuHover">
-                                <v-list-item-content>
-                                    <span>欲赋新词</span>                              
-                                </v-list-item-content>                           
-                            </v-hover>
-                        </v-badge>
-                    </v-list-item>
-                
-            
-        </v-list>    
+            </div>
+        </div>
     
 
     <div id="footer">
@@ -210,18 +201,72 @@
 </v-row>
 
                             <v-card class="elevation-2 post-card">
-    <div class="post-header">
-        <a class="post-header-title font-weight-medium" href="/categories/index.html">分类</a>
-    </div>
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2022/06/23/encrypt/">encrypt</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      发布于:&nbsp;2022-06-23
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      更新于:&nbsp;2022-06-23
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      分类于:&nbsp;未分类
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      阅读次数:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
     <div class="post-content typo">
-        
-            <div class="page-describe">
-                counter.categories
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="9f36698d837736961dc297d338df42bd61ddf91b94cbd31081d86c64e2c53e35">165d50f05814027fb7fe5e4ae8a088d85e75c61d48a21fe4f92c66618cda8718f314dd9ada2b2f1aa61826b81c0123a1</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/">      
+                    仲夏夜
+                </a>
+                <v-icon>chevron_right</v-icon>
             </div>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/">欲赋新词</a><span class="category-list-count">1</span></li></ul>
         
     </div>
 </v-card>
+
+
 
     <v-card class="comment-card elevation-2">
         <v-tabs v-model="commentTab"  id="comment-tabs" active-class="active-comment-tab">
@@ -239,6 +284,7 @@
             
         </v-tabs-items>
     </v-card>
+
         
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
@@ -268,6 +314,12 @@
 
 
 
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
 
 
 

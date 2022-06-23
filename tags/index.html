@@ -39,12 +39,6 @@
     
     
     
-         
-            <script src="//cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-            <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-        
-    
         
     
 
@@ -242,18 +236,10 @@
     <v-card class="comment-card elevation-2">
         <v-tabs v-model="commentTab"  id="comment-tabs" active-class="active-comment-tab">
             
-                <v-tab><span id="comment-tab-0">valine</span></v-tab>
-            
-                <v-tab><span id="comment-tab-1">livere</span></v-tab>
+                <v-tab><span id="comment-tab-0">livere</span></v-tab>
             
         </v-tabs>
-        <v-tabs-items v-model="commentTab" id="tabs-content" data=eyJ1c2UiOlsidmFsaW5lIiwibGl2ZXJlIl0sImdpdGFsa19jbGllbnRfaWQiOm51bGwsImdpdGFsa19jbGllbnRfc2VjcmV0IjpudWxsLCJnaXRhbGtfcmVwbyI6bnVsbCwiZ2l0YWxrX293bmVyIjpudWxsLCJnaXRhbGtfc2lkX3R5cGUiOm51bGwsImdpdGFsa19kaXN0cmFjdGlvbkZyZWVNb2RlIjp0cnVlLCJkaXNxdXNfc2hvcnRuYW1lIjpudWxsLCJsaXZlcmVfZGF0YV91aWQiOiJNVEF5TUM4MU5qWTFNQzh6TXpFeE5BPT0iLCJ2YWxpbmVfbGVhbmNsb3VkX2FwcF9pZCI6InRUTlNlNVNuTGpNeVhUYmtyUmNWVFhNTy1NZFlYYk1NSSIsInZhbGluZV9sZWFuY2xvdWRfYXBwX2tleSI6IkpzN0VqQU15TG1Vc3pmclRKcmdCbkx3ciIsImNoYW5neWFuX2FwcF9pZCI6bnVsbCwiY2hhbmd5YW5fYXBwX2tleSI6bnVsbCwiY2hhbmd5YW5fc2lkX3R5cGUiOm51bGx9 >
-            
-                <v-tab-item eager=true>
-                    
-                        <div id="vcomments"></div>
-                    
-                </v-tab-item>
+        <v-tabs-items v-model="commentTab" id="tabs-content" data=eyJ1c2UiOlsibGl2ZXJlIl0sImdpdGFsa19jbGllbnRfaWQiOm51bGwsImdpdGFsa19jbGllbnRfc2VjcmV0IjpudWxsLCJnaXRhbGtfcmVwbyI6bnVsbCwiZ2l0YWxrX293bmVyIjpudWxsLCJnaXRhbGtfc2lkX3R5cGUiOm51bGwsImdpdGFsa19kaXN0cmFjdGlvbkZyZWVNb2RlIjp0cnVlLCJkaXNxdXNfc2hvcnRuYW1lIjpudWxsLCJsaXZlcmVfZGF0YV91aWQiOiJNVEF5TUM4MU5qWTFNQzh6TXpFeE5BPT0iLCJ2YWxpbmVfbGVhbmNsb3VkX2FwcF9pZCI6InRUTlNlNVNuTGpNeVhUYmtyUmNWVFhNTy1NZFlYYk1NSSIsInZhbGluZV9sZWFuY2xvdWRfYXBwX2tleSI6IkpzN0VqQU15TG1Vc3pmclRKcmdCbkx3ciIsImNoYW5neWFuX2FwcF9pZCI6bnVsbCwiY2hhbmd5YW5fYXBwX2tleSI6bnVsbCwiY2hhbmd5YW5fc2lkX3R5cGUiOm51bGx9 >
             
                 <v-tab-item eager=true>
                     
