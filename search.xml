@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>仲夏夜</title>
-    <url>/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/</url>
-    <content><![CDATA[<h1 id="仲夏夜之梦"><a href="#仲夏夜之梦" class="headerlink" title="仲夏夜之梦"></a>仲夏夜之梦</h1>]]></content>
-      <categories>
-        <category>欲赋新词</category>
-      </categories>
-      <tags>
-        <tag>life</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日记</title>
     <url>/2021/09/23/%E6%97%A5%E8%AE%B0/</url>
     <content><![CDATA[<blockquote>
@@ -25,11 +14,8 @@
 <p>  我还想和那个女孩一起笑。</p>
 ]]></content>
       <categories>
-        <category>拔剑四顾</category>
+        <category>study</category>
       </categories>
-      <tags>
-        <tag>碎碎念</tag>
-      </tags>
   </entry>
   <entry>
     <title>日记1</title>
@@ -42,10 +28,26 @@
 <p>然后，为了防止低效的做那些不好做的事情，每一次做完，都得想办法记住，或者找些记录工具。</p>
 ]]></content>
       <categories>
-        <category>work</category>
+        <category>life</category>
       </categories>
       <tags>
-        <tag>学习</tag>
+        <tag>沙滩拾贝</tag>
+        <tag>欲赋新词</tag>
+        <tag>却道天凉</tag>
+        <tag>拔剑四顾</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>标签1</title>
+    <url>/2022/06/22/%E6%A0%87%E7%AD%BE1/</url>
+    <content><![CDATA[<h1 id="仲夏夜之梦"><a href="#仲夏夜之梦" class="headerlink" title="仲夏夜之梦"></a>仲夏夜之梦</h1>]]></content>
+  </entry>
+  <entry>
+    <title>标签2</title>
+    <url>/2022/06/26/%E6%A0%87%E7%AD%BE2/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Engineering</category>
+      </categories>
   </entry>
 </search>

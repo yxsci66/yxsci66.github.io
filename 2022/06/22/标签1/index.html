@@ -39,10 +39,14 @@
     
     
     
+        
+    
+
+    
     
     <title>
-          
-            我看了两回
+        
+            标签1 | 我看了两回
         
     </title>
     
@@ -105,45 +109,12 @@
     </v-list>
     <v-divider></v-divider>
     
-        <v-list id="sub-menu" class="font-weight-medium" dense>
-            
-                
-                    <v-list-item href="/categories/%E6%8B%94%E5%89%91%E5%9B%9B%E9%A1%BE/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
-                            <v-hover v-model="menuHover">
-                                <v-list-item-content>
-                                    <span>拔剑四顾</span>                              
-                                </v-list-item-content>                           
-                            </v-hover>
-                        </v-badge>
-                    </v-list-item>
-                
-            
-                
-                    <v-list-item href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
-                            <v-hover v-model="menuHover">
-                                <v-list-item-content>
-                                    <span>欲赋新词</span>                              
-                                </v-list-item-content>                           
-                            </v-hover>
-                        </v-badge>
-                    </v-list-item>
-                
-            
-                
-                    <v-list-item href="/categories/work/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
-                            <v-hover v-model="menuHover">
-                                <v-list-item-content>
-                                    <span>work</span>                              
-                                </v-list-item-content>                           
-                            </v-hover>
-                        </v-badge>
-                    </v-list-item>
-                
-            
-        </v-list>    
+        <div class="post-toc">
+            <a href="/2022/06/22/%E6%A0%87%E7%AD%BE1/" class="toc-header">文章目录</a>
+            <div class="toc-content">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%B2%E5%A4%8F%E5%A4%9C%E4%B9%8B%E6%A2%A6"><span class="toc-number">1.</span> <span class="toc-text">仲夏夜之梦</span></a></li></ol>
+            </div>
+        </div>
     
 
     <div id="footer">
@@ -229,29 +200,88 @@
   </v-col>
 </v-row>
 
-                            <v-card class="elevation-2 index-card">
-    <v-timeline class="timeline" dense>
-        <v-timeline-item class="timeline-header" color="secondary lighten-2">
-            <span class="timeline-title">学习</span>
-            <span class="timeline-subtitle">标签</span>
-        </v-timeline-item>
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2022/06/22/%E6%A0%87%E7%AD%BE1/">标签1</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      发布于:&nbsp;2022-06-22
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      更新于:&nbsp;2022-06-27
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      分类于:&nbsp;未分类
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      阅读次数:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <h1 id="仲夏夜之梦"><a href="#仲夏夜之梦" class="headerlink" title="仲夏夜之梦"></a>仲夏夜之梦</h1>
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
         
-            <v-timeline-item fill-dot small color="secondary lighten-2">
-                <div class="timeline-item-post d-none d-md-block">
-                    <span class="timeline-item-time">2021.11.07</span>
-                    <a href="/2021/11/07/%E6%97%A5%E8%AE%B01/" class="timeline-item-title">日记1</a>
-                </div>
-                <div class="timeline-item-post-mobile d-block d-md-none">
-                    <span class="timeline-item-time">2021.11.07</span><br>
-                    <a href="/2021/11/07/%E6%97%A5%E8%AE%B01/" class="timeline-item-title">日记1</a>
-                </div>
-                <v-divider></v-divider>
-            </v-timeline-item>
+            <div class="post-nav-button float-left">
+                <v-icon>chevron_left</v-icon>
+                <a class="font-weight-bold text-left" href="/2022/06/26/%E6%A0%87%E7%AD%BE2/">
+                    标签2
+                </a>
+            </div>
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2021/11/07/%E6%97%A5%E8%AE%B01/">      
+                    日记1
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
         
-    </v-timeline>
+    </div>
 </v-card>
 
-         
+
+
+    <v-card class="comment-card elevation-2">
+        <v-tabs v-model="commentTab"  id="comment-tabs" active-class="active-comment-tab">
+            
+                <v-tab><span id="comment-tab-0">livere</span></v-tab>
+            
+        </v-tabs>
+        <v-tabs-items v-model="commentTab" id="tabs-content" data=eyJ1c2UiOlsibGl2ZXJlIl0sImdpdGFsa19jbGllbnRfaWQiOm51bGwsImdpdGFsa19jbGllbnRfc2VjcmV0IjpudWxsLCJnaXRhbGtfcmVwbyI6bnVsbCwiZ2l0YWxrX293bmVyIjpudWxsLCJnaXRhbGtfc2lkX3R5cGUiOm51bGwsImdpdGFsa19kaXN0cmFjdGlvbkZyZWVNb2RlIjp0cnVlLCJkaXNxdXNfc2hvcnRuYW1lIjpudWxsLCJsaXZlcmVfZGF0YV91aWQiOiJNVEF5TUM4MU5qWTFNQzh6TXpFeE5BPT0iLCJ2YWxpbmVfbGVhbmNsb3VkX2FwcF9pZCI6InRUTlNlNVNuTGpNeVhUYmtyUmNWVFhNTy1NZFlYYk1NSSIsInZhbGluZV9sZWFuY2xvdWRfYXBwX2tleSI6IkpzN0VqQU15TG1Vc3pmclRKcmdCbkx3ciIsImNoYW5neWFuX2FwcF9pZCI6bnVsbCwiY2hhbmd5YW5fYXBwX2tleSI6bnVsbCwiY2hhbmd5YW5fc2lkX3R5cGUiOm51bGx9 >
+            
+                <v-tab-item eager=true>
+                    
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC81NjY1MC8zMzExNA=="></div>
+                    
+                </v-tab-item>
+            
+        </v-tabs-items>
+    </v-card>
+
+        
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">
@@ -280,6 +310,12 @@
 
 
 
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
 
 
 
