@@ -108,11 +108,35 @@
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
                 
+                    <v-list-item href="/categories/%E6%8B%94%E5%89%91%E5%9B%9B%E9%A1%BE/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>拔剑四顾</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
                     <v-list-item href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
                                     <span>欲赋新词</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
+                    <v-list-item href="/categories/work/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>work</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -162,7 +186,7 @@
       <div id="site-title">
         <a href="/" rel="home">我看了两回</a>
       </div>
-      <div id="site-description">记录我的生活</div>
+      <div id="site-description">梦开始的地方</div>
       <div id="mobile-menu" class="d-block d-md-none">
         <v-text-field label="请输入关键字" data-src="/search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,true)"></v-text-field>
         <div class="mobile-mini-menu">

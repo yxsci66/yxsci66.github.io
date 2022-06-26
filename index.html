@@ -164,11 +164,35 @@
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
                 
+                    <v-list-item href="/categories/%E6%8B%94%E5%89%91%E5%9B%9B%E9%A1%BE/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>拔剑四顾</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
                     <v-list-item href="/categories/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
                                     <span>欲赋新词</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
+                    <v-list-item href="/categories/work/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>work</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -218,7 +242,7 @@
       <div id="site-title">
         <a href="/" rel="home">我看了两回</a>
       </div>
-      <div id="site-description">记录我的生活</div>
+      <div id="site-description">梦开始的地方</div>
       <div id="mobile-menu" class="d-block d-md-none">
         <v-text-field label="请输入关键字" data-src="/search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,true)"></v-text-field>
         <div class="mobile-mini-menu">
@@ -302,6 +326,107 @@
       
       <div class="index-article-readmore ">
         <v-btn text href="/2022/06/22/%E4%BB%B2%E5%A4%8F%E5%A4%9C/">阅读更多</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-11-07
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/%E5%AD%A6%E4%B9%A0/ >学习</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/work/">work></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021/11/07/%E6%97%A5%E8%AE%B01/">日记1</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          今天冬至想起，以前的同学，想起以前的老师，想起，以前的求学经历。
+求学求学，渴求学习的方法。
+寻遍网络，是真的找不到答案，还是我不想相信那个答案。
+解决问题，最重要的是解决问题，然后才是优化，才是方案选择。
+不要因为有些事情不好做，就不去做，最少要体验一次。
+然后，为了防止低效的做那些不好做的事情，每一次做完，都得想办法记住，或者找些记录工具。
+
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021/11/07/%E6%97%A5%E8%AE%B01/">阅读更多</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-09-23
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/ >碎碎念</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/%E6%8B%94%E5%89%91%E5%9B%9B%E9%A1%BE/">拔剑四顾></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021/09/23/%E6%97%A5%E8%AE%B0/">日记</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          
+我不擅长社交。社交需要的是沟通，但我不清楚什么该说什么不该说。博客，就写一些随意一点的话吧。
+
+  我真的想解决很多问题，像理想中的那样，兵来将挡，信手拈来。
+  栈满了会报错，那人的忧虑溢出了，又该怎么宣泄？
+  生活，真的很复杂，因为主体是人，很难有标准答案；  程序，不过是模仿、实践加总结的产物。
+  我想去上海，去到梦延续的地方。  无论是程序员，还是其他什么。  我只知道，当我踏足那片土地，我就有无穷的力量去支持我的前进。
+  我有理想，我想实现价值，我想满足他人的需求，更想满足自己的需求。
+  我还想和那个女孩一起笑。
+
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021/09/23/%E6%97%A5%E8%AE%B0/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
