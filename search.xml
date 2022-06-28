@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>日记</title>
-    <url>/2021/09/23/%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>我不擅长社交。社交需要的是沟通，但我不清楚什么该说什么不该说。<br>博客，就写一些随意一点的话吧。</p>
+    <title>formatting on vscode</title>
+    <url>/2022/06/29/formatting-on-vscode/</url>
+    <content><![CDATA[<h1 id="eslint和prettier"><a href="#eslint和prettier" class="headerlink" title="eslint和prettier"></a>eslint和prettier</h1><p>本文给出一个可行的解决eslint和prettier同时生效的vscode的解决方案。</p>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i eslint -g</span><br><span class="line"></span><br><span class="line">// 生成.eslintrc.js，并根据选项下载对应的包</span><br><span class="line">npx eslint --init </span><br><span class="line">    eslint somename.js --fix // 原理：执行格式化脚本命令进行格式化</span><br><span class="line">//eslint插件安装</span><br><span class="line"></span><br><span class="line">npm i prettier -D</span><br><span class="line">    npx prettier --write index.js // 原理：脚本格式化</span><br><span class="line">.prettierrc.js //手动创建</span><br><span class="line">//prettier插件安装</span><br><span class="line"></span><br><span class="line">npm i eslint eslint-config-prettier eslint-plugin-prettier -D </span><br><span class="line">//eslint-config-prettier 的作用是关闭eslint中与prettier相互冲突的规则。</span><br><span class="line">//eslint-plugin-prettier 的作用是赋予eslint用prettier格式化代码的能力</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="setting-json"><a href="#setting-json" class="headerlink" title="setting.json"></a>setting.json</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,</span><br><span class="line">  // 配置prettier为默认格式化工具，以vue为例</span><br><span class="line">  &quot;[vue]&quot;: &#123;</span><br><span class="line">    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  // 配置 ESLint 检查的文件类型</span><br><span class="line">  &quot;eslint.validate&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;vue&quot;,</span><br><span class="line">    &quot;html&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="eslintrc-js"><a href="#eslintrc-js" class="headerlink" title=".eslintrc.js"></a>.eslintrc.js</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    extends: [</span><br><span class="line">        &quot;plugin:prettier/recommended&quot;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000015315545">https://segmentfault.com/a/1190000015315545</a><br><a href="https://juejin.cn/post/6990929456382607374">https://juejin.cn/post/6990929456382607374</a><br><a href="https://juejin.cn/post/7012160233061482532">https://juejin.cn/post/7012160233061482532</a></p>
 </blockquote>
-<p>  我真的想解决很多问题，像理想中的那样，兵来将挡，信手拈来。</p>
-<p>  栈满了会报错，那人的忧虑溢出了，又该怎么宣泄？</p>
-<p>  生活，真的很复杂，因为主体是人，很难有标准答案；<br>  程序，不过是模仿、实践加总结的产物。</p>
-<p>  我想去上海，去到梦延续的地方。<br>  无论是程序员，还是其他什么。<br>  我只知道，当我踏足那片土地，我就有无穷的力量去支持我的前进。</p>
-<p>  我有理想，我想实现价值，我想满足他人的需求，更想满足自己的需求。</p>
-<p>  我还想和那个女孩一起笑。</p>
 ]]></content>
       <categories>
-        <category>study</category>
+        <category>engineering</category>
       </categories>
   </entry>
   <entry>
@@ -38,16 +36,24 @@
       </tags>
   </entry>
   <entry>
+    <title>日记</title>
+    <url>/2021/09/23/%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>我不擅长社交。社交需要的是沟通，但我不清楚什么该说什么不该说。<br>博客，就写一些随意一点的话吧。</p>
+</blockquote>
+<p>  我真的想解决很多问题，像理想中的那样，兵来将挡，信手拈来。<br>  栈满了会报错，那人的忧虑溢出了，又该怎么宣泄？</p>
+<p>  生活，真的很复杂，因为主体是人，很难有标准答案；<br>  程序，不过是模仿、实践加总结的产物。</p>
+<p>  我想去上海，去到梦延续的地方。<br>  无论是程序员，还是其他什么。<br>  我只知道，当我踏足那片土地，我就有无穷的力量去支持我的前进。</p>
+<p>  我有理想，我想实现价值，我想满足他人的需求，更想满足自己的需求。</p>
+<p>  我还想和那个女孩一起笑。</p>
+]]></content>
+      <categories>
+        <category>study</category>
+      </categories>
+  </entry>
+  <entry>
     <title>标签1</title>
     <url>/2022/06/22/%E6%A0%87%E7%AD%BE1/</url>
     <content><![CDATA[<h1 id="仲夏夜之梦"><a href="#仲夏夜之梦" class="headerlink" title="仲夏夜之梦"></a>仲夏夜之梦</h1>]]></content>
-  </entry>
-  <entry>
-    <title>标签2</title>
-    <url>/2022/06/26/%E6%A0%87%E7%AD%BE2/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Engineering</category>
-      </categories>
   </entry>
 </search>

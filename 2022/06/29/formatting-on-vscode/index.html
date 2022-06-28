@@ -46,7 +46,7 @@
     
     <title>
         
-            标签2 | 我看了两回
+            formatting on vscode | 我看了两回
         
     </title>
     
@@ -110,9 +110,9 @@
     <v-divider></v-divider>
     
         <div class="post-toc">
-            <a href="/2022/06/26/%E6%A0%87%E7%AD%BE2/" class="toc-header">文章目录</a>
+            <a href="/2022/06/29/formatting-on-vscode/" class="toc-header">文章目录</a>
             <div class="toc-content">
-                
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#eslint%E5%92%8Cprettier"><span class="toc-number">1.</span> <span class="toc-text">eslint和prettier</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">安装流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setting-json"><span class="toc-number">1.2.1.</span> <span class="toc-text">setting.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eslintrc-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">.eslintrc.js</span></a></li></ol></li></ol></li></ol>
             </div>
         </div>
     
@@ -142,7 +142,7 @@
             <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
             <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
             <span>
-                &copy; 2022 - 2022 
+                &copy; 2021 - 2022 
                 yxsci66
             </span>
         </div>
@@ -204,19 +204,19 @@
     
     
         <div class="post-header">
-  <a class="post-header-title font-weight-medium" href="/2022/06/26/%E6%A0%87%E7%AD%BE2/">标签2</a>
+  <a class="post-header-title font-weight-medium" href="/2022/06/29/formatting-on-vscode/">formatting on vscode</a>
   <div class="post-header-meta">   
     <span>
       <v-icon color="">event</v-icon>
-      发布于:&nbsp;2022-06-26
+      发布于:&nbsp;2022-06-29
     </span>
     <span>
       <v-icon color="">event_available</v-icon>
-      更新于:&nbsp;2022-06-27
+      更新于:&nbsp;2022-06-29
     </span>
     <span>
       <v-icon color="">folder</v-icon>
-      分类于:&nbsp;<a class="category-link" href="/categories/Engineering/">Engineering</a>
+      分类于:&nbsp;<a class="category-link" href="/categories/engineering/">engineering</a>
     </span>
     
     <span>
@@ -232,7 +232,14 @@
     
     
     <div class="post-content typo">
-        
+        <h1 id="eslint和prettier"><a href="#eslint和prettier" class="headerlink" title="eslint和prettier"></a>eslint和prettier</h1><p>本文给出一个可行的解决eslint和prettier同时生效的vscode的解决方案。</p>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm i eslint -g</span><br><span class="line"></span><br><span class="line">// 生成.eslintrc.js，并根据选项下载对应的包</span><br><span class="line">npx eslint --init </span><br><span class="line">    eslint somename.js --fix // 原理：执行格式化脚本命令进行格式化</span><br><span class="line">//eslint插件安装</span><br><span class="line"></span><br><span class="line">npm i prettier -D</span><br><span class="line">    npx prettier --write index.js // 原理：脚本格式化</span><br><span class="line">.prettierrc.js //手动创建</span><br><span class="line">//prettier插件安装</span><br><span class="line"></span><br><span class="line">npm i eslint eslint-config-prettier eslint-plugin-prettier -D </span><br><span class="line">//eslint-config-prettier 的作用是关闭eslint中与prettier相互冲突的规则。</span><br><span class="line">//eslint-plugin-prettier 的作用是赋予eslint用prettier格式化代码的能力</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="setting-json"><a href="#setting-json" class="headerlink" title="setting.json"></a>setting.json</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,</span><br><span class="line">  // 配置prettier为默认格式化工具，以vue为例</span><br><span class="line">  &quot;[vue]&quot;: &#123;</span><br><span class="line">    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  // 配置 ESLint 检查的文件类型</span><br><span class="line">  &quot;eslint.validate&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;vue&quot;,</span><br><span class="line">    &quot;html&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="eslintrc-js"><a href="#eslintrc-js" class="headerlink" title=".eslintrc.js"></a>.eslintrc.js</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    extends: [</span><br><span class="line">        &quot;plugin:prettier/recommended&quot;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015315545">https://segmentfault.com/a/1190000015315545</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6990929456382607374">https://juejin.cn/post/6990929456382607374</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7012160233061482532">https://juejin.cn/post/7012160233061482532</a></p>
+</blockquote>
+
     </div>
     <!--文末结束语-->
     
@@ -279,7 +286,7 @@
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">
                                     <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
-                                    <span> &copy; 2022 - 2022 yxsci66</span>
+                                    <span> &copy; 2021 - 2022 yxsci66</span>
                                 </div>
                             </div>                   
                         </v-col>                                            

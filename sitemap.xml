@@ -2,18 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yxsci66.github.io/2022/06/22/%E6%A0%87%E7%AD%BE1/</loc>
+    <loc>https://yxsci66.github.io/2022/06/29/formatting-on-vscode/</loc>
     
-    <lastmod>2022-06-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yxsci66.github.io/2022/06/26/%E6%A0%87%E7%AD%BE2/</loc>
-    
-    <lastmod>2022-06-26</lastmod>
+    <lastmod>2022-06-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -21,6 +12,15 @@
   
   <url>
     <loc>https://yxsci66.github.io/2021/09/23/%E6%97%A5%E8%AE%B0/</loc>
+    
+    <lastmod>2022-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yxsci66.github.io/2022/06/22/%E6%A0%87%E7%AD%BE1/</loc>
     
     <lastmod>2022-06-26</lastmod>
     
@@ -113,7 +113,7 @@
 
   
   <url>
-    <loc>https://yxsci66.github.io/categories/study/</loc>
+    <loc>https://yxsci66.github.io/categories/engineering/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -127,7 +127,7 @@
   </url>
   
   <url>
-    <loc>https://yxsci66.github.io/categories/Engineering/</loc>
+    <loc>https://yxsci66.github.io/categories/study/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
