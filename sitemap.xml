@@ -83,6 +83,13 @@
 
   
   <url>
+    <loc>https://yxsci66.github.io/tags/%E5%8D%B4%E9%81%93%E5%A4%A9%E5%87%89/</loc>
+    <lastmod>2022-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://yxsci66.github.io/tags/%E6%B2%99%E6%BB%A9%E6%8B%BE%E8%B4%9D/</loc>
     <lastmod>2022-06-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -91,13 +98,6 @@
   
   <url>
     <loc>https://yxsci66.github.io/tags/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/</loc>
-    <lastmod>2022-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://yxsci66.github.io/tags/%E5%8D%B4%E9%81%93%E5%A4%A9%E5%87%89/</loc>
     <lastmod>2022-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -113,14 +113,14 @@
 
   
   <url>
-    <loc>https://yxsci66.github.io/categories/engineering/</loc>
+    <loc>https://yxsci66.github.io/categories/life/</loc>
     <lastmod>2022-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yxsci66.github.io/categories/life/</loc>
+    <loc>https://yxsci66.github.io/categories/engineering/</loc>
     <lastmod>2022-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -112,11 +112,11 @@
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
                 
-                    <v-list-item href="/categories/engineering/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                    <v-list-item href="/categories/life/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="3" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
-                                    <span>engineering</span>                              
+                                    <span>life</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -124,11 +124,11 @@
                 
             
                 
-                    <v-list-item href="/categories/life/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="3" >
+                    <v-list-item href="/categories/engineering/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
-                                    <span>life</span>                              
+                                    <span>engineering</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -235,6 +235,14 @@
                     <v-badge :value="tagHover" transition="slide-x-transition" inline content="1" >
                         <v-hover v-model="tagHover">
                             <v-chip color="secondary" class="tags-chip font-weight-medium">
+                                <a href="/tags/%E5%8D%B4%E9%81%93%E5%A4%A9%E5%87%89/">却道天凉</a>
+                            </v-chip>
+                        </v-hover>
+                    </v-badge>
+                
+                    <v-badge :value="tagHover" transition="slide-x-transition" inline content="1" >
+                        <v-hover v-model="tagHover">
+                            <v-chip color="secondary" class="tags-chip font-weight-medium">
                                 <a href="/tags/%E6%B2%99%E6%BB%A9%E6%8B%BE%E8%B4%9D/">沙滩拾贝</a>
                             </v-chip>
                         </v-hover>
@@ -244,14 +252,6 @@
                         <v-hover v-model="tagHover">
                             <v-chip color="secondary" class="tags-chip font-weight-medium">
                                 <a href="/tags/%E6%AC%B2%E8%B5%8B%E6%96%B0%E8%AF%8D/">欲赋新词</a>
-                            </v-chip>
-                        </v-hover>
-                    </v-badge>
-                
-                    <v-badge :value="tagHover" transition="slide-x-transition" inline content="1" >
-                        <v-hover v-model="tagHover">
-                            <v-chip color="secondary" class="tags-chip font-weight-medium">
-                                <a href="/tags/%E5%8D%B4%E9%81%93%E5%A4%A9%E5%87%89/">却道天凉</a>
                             </v-chip>
                         </v-hover>
                     </v-badge>

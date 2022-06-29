@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>10种快乐</title>
+    <url>/2022/06/29/10%E7%A7%8D%E5%BF%AB%E4%B9%90/</url>
+    <content><![CDATA[<h1 id="世上有-10-n-种快乐"><a href="#世上有-10-n-种快乐" class="headerlink" title="世上有 10(n)种快乐"></a>世上有 10<sub>(n)</sub>种快乐</h1><img align="right" width="300px" src="https://github.com/yxsci66/yxsci66.github.io/tree/master/images/10种快乐/糖果.jpg"/>
+
+<p>第1种，是小孩给你发糖吃，顺便逗你玩的快乐；</p>
+<p>第10<sub>(2)</sub>种，是吃小孩的糖时，顺便逗小孩玩的快乐；</p>
+<p>第10<sub>(3)</sub>种，是旁观一大一小两个小孩互相取乐的快乐······</p>
+<blockquote>
+<p>注：n的取值即快乐种数。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>却道天凉</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>formatting on vscode</title>
     <url>/2022/06/29/formatting-on-vscode/</url>
     <content><![CDATA[<h1 id="eslint和prettier"><a href="#eslint和prettier" class="headerlink" title="eslint和prettier"></a>eslint和prettier</h1><p>本文给出一个可行的解决eslint和prettier同时生效的vscode的解决方案。</p>
@@ -35,25 +54,6 @@
       </categories>
       <tags>
         <tag>欲赋新词</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>10种快乐</title>
-    <url>/2022/06/29/10%E7%A7%8D%E5%BF%AB%E4%B9%90/</url>
-    <content><![CDATA[<h1 id="世上有-10-n-种快乐"><a href="#世上有-10-n-种快乐" class="headerlink" title="世上有 10(n)种快乐"></a>世上有 10<sub>(n)</sub>种快乐</h1><img align="right" width="300px" src="./10种快乐/糖果.jpg"/>
-
-<p>第1种，是小孩给你发糖吃，顺便逗你玩的快乐；</p>
-<p>第10<sub>(2)</sub>种，是吃小孩的糖时，顺便逗小孩玩的快乐；</p>
-<p>第10<sub>(3)</sub>种，是旁观一大一小两个小孩互相取乐的快乐······</p>
-<blockquote>
-<p>注：n的取值即快乐种数。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>life</category>
-      </categories>
-      <tags>
-        <tag>却道天凉</tag>
       </tags>
   </entry>
   <entry>
