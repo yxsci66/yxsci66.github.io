@@ -1,0 +1,64 @@
+---
+import { site } from '../config/site';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; article?: boolean; noindex?: boolean; }
+const { title, description = site.description, article = false, noindex = false } = Astro.props;
+const pageTitle = title ? `${title} · ${site.title}` : site.title;
+const canonical = new URL(Astro.url.pathname, site.url);
+const path = Astro.url.pathname;
+const nav = [['/', '首页'], ['/blog/', '文章'], ['/projects/', '项目'], ['/about/', '关于']];
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f4ee" />
+    <title>{pageTitle}</title>
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/images/favicon.ico" sizes="any" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.title} RSS`} href="/rss.xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:image" content={new URL('/images/avatar.jpg', site.url)} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header" data-pagefind-ignore>
+      <a class="wordmark" href="/">Harlen<span class="brand-dot">.</span><small>WORLD & WORDS</small></a>
+      <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="打开导航">菜单 <span aria-hidden="true">＋</span></button>
+      <nav id="main-nav" aria-label="主导航">
+        {nav.map(([url, label]) => <a href={url} aria-current={url === '/' ? (path === '/' ? 'page' : undefined) : (path.startsWith(url) ? 'page' : undefined)}>{label}</a>)}
+        <a class="search-link" href="/search/" aria-current={path === '/search/' ? 'page' : undefined}>搜索 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1" data-pagefind-ignore={article ? undefined : true}><slot /></main>
+    <footer class="site-footer" data-pagefind-ignore>
+      <p><a href="/">Harlen's World</a><span>文字、代码，以及生活。</span></p>
+      <nav aria-label="页脚导航"><a href="/archives/">归档</a><a href="/rss.xml">RSS</a><a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+      <small>© {new Date().getFullYear()} Harlen</small>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector('#main-nav');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+        nav?.classList.toggle('is-open', open);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+          toggle.click();
+          toggle.focus();
+        }
+      });
+    </script>
+  </body>
+</html>

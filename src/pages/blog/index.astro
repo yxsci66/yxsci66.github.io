@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+---
+<Base title="文章" description="Harlen 的技术笔记与生活记录。"><PageHeading eyebrow="THE JOURNAL / 文字与记录" title="文章" description="写下遇到的问题，也记下走过的日常。"><nav class="subnav" aria-label="文章分类导航"><a href="/archives/">归档 <span>{posts.length}</span></a><a href="/tags/">标签</a><a href="/categories/">分类</a></nav></PageHeading><PostList posts={posts} /></Base>
