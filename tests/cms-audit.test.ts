@@ -66,3 +66,29 @@ test('public artifact verification removes only the validated manifest when requ
   await assert.rejects(() => readFile(path.join(root, 'release-manifest.json')));
   assert.equal(await readFile(path.join(root, 'index.html'), 'utf8'), '<p>public</p>');
 });
+test('manifest verification accepts reordered keys including Chinese paths', async () => {
+  assert.ok(audit);
+  const root = await fixture();
+  await writeFile(path.join(root, '中文.html'), '<p>中文</p>');
+  await writeFile(path.join(root, 'alpha.html'), '<p>alpha</p>');
+  await audit.sealOutput(root);
+  const file = path.join(root, 'release-manifest.json');
+  const manifest = JSON.parse(await readFile(file, 'utf8'));
+  manifest.files = Object.fromEntries(Object.entries(manifest.files).reverse());
+  await writeFile(file, JSON.stringify(manifest));
+  await audit.verifyOutput(root);
+});
+test('order-independent manifest verification still rejects extra, missing and changed hashes', async () => {
+  assert.ok(audit);
+  for (const change of ['extra', 'missing', 'hash']) {
+    const root = await fixture();
+    await audit.sealOutput(root);
+    const file = path.join(root, 'release-manifest.json');
+    const manifest = JSON.parse(await readFile(file, 'utf8'));
+    if (change === 'extra') manifest.files['extra.html'] = '0'.repeat(64);
+    if (change === 'missing') delete manifest.files['index.html'];
+    if (change === 'hash') manifest.files['index.html'] = '0'.repeat(64);
+    await writeFile(file, JSON.stringify(manifest));
+    await assert.rejects(() => audit.verifyOutput(root));
+  }
+});
