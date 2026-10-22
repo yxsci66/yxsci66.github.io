@@ -1,5 +1,25 @@
 {
-  "dependencies": {
-    "hexo": "^7.3.0"
+  "name": "harlen-world",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "engines": { "node": ">=22.22.0", "pnpm": ">=10" },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview --host 127.0.0.1",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": { "astro": "6.4.8", "@astrojs/rss": "4.0.19", "@astrojs/sitemap": "3.7.4" },
+  "pnpm": { "onlyBuiltDependencies": ["esbuild", "sharp"] },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@playwright/test": "1.64.1",
+    "@types/node": "^22.0.0",
+    "pagefind": "1.5.2",
+    "typescript": "~5.9.3"
   }
 }

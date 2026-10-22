@@ -1,4 +1,14 @@
-# jekyll local file
-.jekyll*
-_site
-node_modules
+node_modules/
+dist/
+.astro/
+.worktrees/
+.pnpm-store/
+.cache/
+.tools/
+playwright-report/
+test-results/
+.codex/progress.md
+.codex/reports/
+.env
+.env.*
+!.env.example
