@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yxsci66.github.io/sitemap-index.xml
