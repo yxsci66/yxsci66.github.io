@@ -1,26 +1,61 @@
 # Harlen's World
 
-个人主页与中文博客：<https://yxsci66.github.io/>。使用 Astro、Markdown、Pagefind，通过 GitHub Actions 发布到 GitHub Pages。无后台、评论、统计或自定义域名。
+个人主页与中文博客：<https://yxsci66.github.io/>。Astro + GitHub Pages 提供前台，Pages CMS 管理私有稿件，GitHub Actions 构建发布，giscus 使用公开 Discussions 保存评论。无需租服务器。
 
-## 本地维护
+## 写作与发布
 
-需要 Node.js 22.22.0 或更新的兼容版本，以及 pnpm 10.33.2。在当前工作树中运行：
+从网站的 `/admin/` 进入 [Pages CMS](https://app.pagescms.org/)，使用自己的 GitHub 账号打开私有仓库 `yxsci66/harlen-blog-content`。首次使用按 [后台连接说明](docs/editorial-setup.md) 安装应用并设置专用发布凭据。
+
+手机、平板和电脑使用同一后台。正文支持可视化编辑和 Markdown 源码模式，文章可以设置日期、标签、分类和可见性。
+
+1. 在写作集合创建或修改文章，上传图片，**手动点击保存**。
+2. 保存后等待发布管理记录同步。保存仅更新私有稿件，线上版本保持不变。
+3. 在发布管理中打开对应文章，执行发布或更新操作。工作流核验保存版本，冻结正文及媒体，只更新选中的文章。
+4. GitHub Pages 部署成功后，管理记录才显示新的线上状态。失败保留原线上版本；再次操作会先核对未完成的部署。
+
+未保存的输入不保证恢复。新建文章默认仅自己可见；文章 ID 创建后保持不变。长文正文和访问口令不作为后台操作参数发送。
+
+| 可见性 | 阅读方式 | 发现与评论 |
+|---|---|---|
+| 公开 | 任何人阅读 | 首页、标签、分类、搜索、RSS、sitemap；可开启评论 |
+| 仅链接 | 知道链接的人阅读，内容仍是公开文件 | 不进入发现入口，noindex，不启用评论 |
+| 密码 | UUID 链接与独立口令，浏览器内解密正文、元数据和媒体 | 通用锁定页，不进入发现入口，不启用评论 |
+| 仅自己 | 私有后台内编辑与阅读 | 不生成公开页面或附件 |
+
+密码首次发布时随机生成，在私有访问口令集合中查看和复制。换口令只重发当前线上内容，不会夹带未发布草稿。加密文章支持 JPEG、PNG、WebP、GIF，以及 PDF、TXT、ZIP 下载附件；单篇原始媒体合计上限 10 MiB，不支持外链图片、执行脚本或嵌入页面。
+
+恢复历史版本按单篇正文和媒体进行，保留当前可见性与当前口令。修改稿件为仅自己后，仍须执行发布或撤回操作，才能改变线上状态。以前公开的 Git 历史、评论、缓存和读者已下载的副本无法收回；Pages CMS 和 GitHub 是受信任的内容处理服务。
+
+## 仓库与发布边界
+
+- 本公开仓库 `main` 存网站代码和五篇已公开的开发样例。不要在这里写私有稿件、口令或令牌。
+- 私有 `harlen-blog-content` 保存原稿、媒体、发布快照、线上记录与口令。仅本人具有人工访问权限。
+- 私有 Actions 使用已验证的 `PUBLIC_CODE_SHA` 构建当前已发布快照，审查输出后，将静态成品推到本仓库 `site-release`。
+- 公开工作流只部署指定完整 SHA 的已审查成品，永远不读取私有仓库。`main` 推送运行验证，不直接重发开发样例。
+
+代码升级先通过检查，再将私有仓库 Actions variable `PUBLIC_CODE_SHA` 更新为对应公开提交，从后台重建已发布站点。不要通过重跑旧整站发布来回滚文章：旧成品可能包含已经撤回的内容。
+
+## 本地开发
+
+需要 Node.js 22.22.0 或更新的兼容版本，以及 pnpm 10.33.2。
 
 ```powershell
 pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-生产预览：
+普通开发使用公开的五篇样例。全文搜索需要完整构建：
 
 ```powershell
 pnpm build
 pnpm preview
 ```
 
-全文搜索索引由生产构建生成，使用 `build` 后的 `preview` 检查搜索；开发服务器不会生成索引。构建同时生成 RSS、站点地图、robots.txt 和旧链接跳转页，临时别名清单会在发布前删除。请使用完整的 `pnpm build`，不要单独发布 `astro build` 的中间产物。
+真实发布输入由私有快照生成，通过绝对路径 `HARLEN_CONTENT_ROOT` 指定。生产设置 `HARLEN_PRODUCTION=1`；缺失完整输入时构建失败，不会回退到开发样例。生产构建只复制站点通用静态资源，以及快照实际引用的公开媒体和密文。
 
-发布前检查：
+资料在 `src/config/site.ts`，项目列表在 `src/data/projects.ts`，评论配置在 `src/config/comments.ts`。发现入口统一使用 `getPosts()`；直接可读路由使用 `getRoutablePosts()`。旧链接由 `legacyPaths` 保留。请运行完整 `pnpm build`，不要部署 `astro build` 中间产物。
+
+## 验证
 
 ```powershell
 pnpm test
@@ -28,9 +63,12 @@ pnpm check
 pnpm build
 pnpm test:e2e
 pnpm test:drafts
+pnpm test:editorial
 ```
 
-浏览器测试在 Windows 自动复用已安装的标准路径 Chrome。没有 Chrome 时，先安装匹配当前 Playwright 版本的 Chromium；浏览器和临时构建均留在项目 `.cache/`：
+`test:editorial` 生成混合可见性与零公开文章两种生产输入，实际构建并验证手机解锁、重新锁定、附件回收、索引隔离和空搜索；结束后恢复普通开发构建。`test:drafts` 通过独立副本验证旧草稿隔离。浏览器测试默认使用本机 4322 端口，不复用其他预览进程。
+
+Windows 自动复用标准路径安装的 Chrome。没有浏览器时，将下载和临时目录留在项目缓存：
 
 ```powershell
 $env:PLAYWRIGHT_BROWSERS_PATH = Join-Path (Get-Location) '.cache/ms-playwright'
@@ -40,55 +78,6 @@ $env:TEMP = $browserTempDirectory
 $env:TMP = $browserTempDirectory
 $env:TMPDIR = $browserTempDirectory
 pnpm exec playwright install chromium
-pnpm test:e2e
-pnpm test:drafts
 ```
 
-Linux CI 使用 `pnpm exec playwright install --with-deps chromium`。`test:drafts` 在 `.cache/` 临时副本注入草稿并真实构建，核验页面、分类标签、Feed、站点地图、旧入口和 Pagefind 搜索，完成后清理副本。
-
-本仓库原始 master 工作区有保留的未提交改动。继续在当前工作树维护；不要直接在原工作区 checkout 或 pull 覆盖这些改动。
-
-## 写文章与更新资料
-
-新增 `src/content/blog/my-new-post.md`，文件名决定稳定地址 `/blog/my-new-post/`。示例：
-
-```markdown
----
-title: 一篇新文章
-description: 用一两句话概括内容。
-pubDate: 2026-10-22
-updatedDate: 2026-10-23
-category: engineering
-tags: [随笔, TypeScript]
-draft: false
-featured: false
-legacyPaths: []
----
-
-从这里开始正文。
-```
-
-`title`、`description`、`pubDate` 必填；`updatedDate`、`category` 可省略，其余字段有上述默认值。日期保留真实发布日期。`featured: true` 显示在首页精选。图片放 `public/images/`，正文写 `/images/文件名.webp`。
-
-`draft: true` 会从构建页面、搜索、RSS、站点地图和旧链接别名中排除。仓库源码是公开的，草稿也不能包含密码、令牌、私人资料或其他秘密。
-
-资料集中在 `src/config/site.ts`，项目列表在 `src/data/projects.ts`。文章公开入口统一使用 `src/lib/posts.ts` 的 `getPosts()`，新增功能也遵守此约定。
-
-迁移文章时用 `legacyPaths` 记录原根路径，例如 `[/2021/09/23/日记210923/]`；构建生成静态 meta refresh、可点击链接与新地址 canonical，目录入口及 `index.html` 均可访问。重复别名、与现有页面冲突或无效目标会使构建失败。Windows 默认文件系统不区分大小写，`Engineering` 旧分类本地复用小写分类正文并保留小写 canonical；Linux CI 会额外生成实际跳转页并测试。不要改写已有文章文件名；确需修改时同时保留旧入口。
-
-## 自动发布与回滚
-
-PR 自动运行单元测试、类型检查、构建、浏览器测试及草稿隔离检查。main 推送和 main 上手动运行 `Validate and deploy Pages` 时，通过全部检查后上传官方 Pages artifact，再部署到 `github-pages` 环境；其他分支手动运行只验证。相同 ref 的新运行会取消旧运行，避免旧构建覆盖新部署。
-
-首次上线需在仓库 Pages 设置选择 GitHub Actions；不需要 CNAME。工作流的默认权限为 `contents: read`，只有部署任务获得 `pages: write` 和 `id-token: write`。Actions 版本固定为经过官方仓库核对的 commit SHA。
-
-回滚时在 Actions 找到之前已验证成功、属于 main 的运行，核对其完整 commit SHA，然后选择 **Re-run all jobs**，以该 SHA 重新构建并发布。也可用已认证的 GitHub CLI：
-
-```powershell
-gh run list --workflow pages.yml --branch main --status success
-gh run view <运行ID> --json headSha,conclusion,url
-gh run rerun <运行ID>
-gh run watch <运行ID>
-```
-
-回滚后核对线上首页、文章、搜索、RSS 和旧入口。若 main 正在发布新版本，先协调暂停新提交，避免后续 main 运行再次覆盖回滚结果；随后用新的提交修复源码，使 main 与预期版本一致。
+Linux CI 使用 `pnpm exec playwright install --with-deps chromium`。工作流 Actions 固定到提交 SHA；发布任务单独获得 Pages 部署权限。更多接口与安全边界见 [实现契约](docs/editorial-contract.md)。

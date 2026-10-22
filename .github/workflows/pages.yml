@@ -1,30 +1,37 @@
 name: Validate and deploy Pages
-
+run-name: ${{ github.event_name == 'workflow_dispatch' && format('Safe deployment {0}', inputs.release_sha) || 'Validate public fixtures' }}
 on:
   pull_request:
   push:
     branches: [main]
   workflow_dispatch:
-
+    inputs:
+      release_sha:
+        description: Exact validated static site-release commit
+        required: true
+        type: string
 permissions:
   contents: read
-
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
-
+  group: ${{ github.event_name == 'workflow_dispatch' && 'harlen-public-deployment' || format('validate-{0}', github.ref) }}
+  queue: max
+  cancel-in-progress: false
 jobs:
-  build:
+  validate:
+    if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     env:
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
       ASTRO_TELEMETRY_DISABLED: '1'
+      HARLEN_GIT_INTEGRATION: '1'
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413
         with:
           version: 10.33.2
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version: 22.22.0
           cache: pnpm
@@ -35,15 +42,37 @@ jobs:
       - run: pnpm build
       - run: pnpm test:e2e
       - run: pnpm test:drafts
-      - name: Upload validated site
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+      - run: pnpm test:editorial
+  safe-artifact:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          path: dist
-
+          ref: ${{ github.sha }}
+          persist-credentials: true
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 22.22.0
+      - name: Extract exact site-release head as data
+        env:
+          RELEASE_SHA: ${{ inputs.release_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git fetch --depth=1 origin refs/heads/site-release
+          test "$(git rev-parse FETCH_HEAD)" = "$RELEASE_SHA"
+          mkdir safe-site
+          git archive "$RELEASE_SHA" | tar -x -C safe-site
+      - name: Verify static paths and every artifact byte
+        run: node --experimental-strip-types scripts/cms/audit-cli.ts safe-site --strip-manifest
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          path: safe-site
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: build
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: safe-artifact
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -52,6 +81,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy validated site
+      - name: Deploy exact validated static artifact
         id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346

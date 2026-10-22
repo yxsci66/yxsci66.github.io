@@ -1,0 +1,40 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { emptyState } from '../scripts/cms/transaction.ts';
+import { persistCheckpoint, writeJson } from '../scripts/cms/repository.ts';
+
+test('real Git checkpoint preserves a CMS save advancing private main during deployment', { skip: process.env.HARLEN_GIT_INTEGRATION !== '1' && !process.env.CI }, async () => {
+  // Every repository and commit in this test is an isolated disposable fixture, never a project remote.
+  const parent = fileURLToPath(new URL('../.cache/', import.meta.url));
+  await mkdir(parent, { recursive: true });
+  const root = await mkdtemp(path.join(parent, 'cms-git-test-'));
+  const run = (cwd: string, args: string[]) => execFileSync('git', ['-c','user.name=Fixture','-c','user.email=fixture@example.invalid', ...args], { cwd, encoding: 'utf8', stdio: ['ignore','pipe','pipe'] }).trim();
+  run(root, ['init','--bare','--initial-branch=main','remote.git']);
+  run(root, ['clone',path.join(root,'remote.git'),'publisher']);
+  const publisher = path.join(root,'publisher');
+  await mkdir(path.join(publisher,'posts'));
+  await mkdir(path.join(publisher,'media'));
+  await mkdir(path.join(publisher,'releases'));
+  await writeFile(path.join(publisher,'media','.gitkeep'), '');
+  await writeFile(path.join(publisher,'releases','.gitkeep'), '');
+  const id = '2438a7ae-9da9-4ef8-bd93-71fc641f112b';
+  const post = path.join(publisher,'posts',`${id}.md`);
+  await writeFile(post, `---\narticleId: ${id}\ntitle: Original\nvisibility: private\n---\nOriginal body`);
+  const state = emptyState();
+  await writeJson(path.join(publisher,'ledger','state.json'), state);
+  run(publisher,['add','.']); run(publisher,['commit','-m','Fixture initial']); run(publisher,['push','origin','main']);
+  run(root,['clone',path.join(root,'remote.git'),'cms']);
+  const cms = path.join(root,'cms');
+  await writeFile(path.join(cms,'posts',`${id}.md`), `---\narticleId: ${id}\ntitle: NEW SAVED DRAFT\nvisibility: private\n---\nIndependent draft`);
+  run(cms,['add','.']); run(cms,['commit','-m','Fixture CMS save']); run(cms,['push','origin','main']);
+  state.requests['completed-request'] = 'completed';
+  await persistCheckpoint(publisher,state);
+  assert.match(await readFile(post,'utf8'), /NEW SAVED DRAFT/);
+  assert.equal(JSON.parse(await readFile(path.join(publisher,'manage',`${id}.json`),'utf8')).title, 'NEW SAVED DRAFT');
+  const remoteState = run(root,['--git-dir',path.join(root,'remote.git'),'show','main:ledger/state.json']);
+  assert.equal(JSON.parse(remoteState).requests['completed-request'], 'completed');
+});

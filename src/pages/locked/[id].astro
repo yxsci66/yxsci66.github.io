@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { readProtectedRoutes } from '../../lib/content-source';
+export function getStaticPaths() {
+  return readProtectedRoutes().map(route => ({ params: { id: route.id }, props: { route } }));
+}
+const { route } = Astro.props;
+---
+<Base title="加密文章" description="输入作者提供的密码，在本设备上阅读。" noindex>
+  <section class="locked-reader" data-locked-reader data-article-id={route.id} data-payload-url={route.payloadUrl} data-pagefind-ignore>
+    <div class="locked-gate">
+      <a class="back-link" href="/">← 返回首页</a><p class="eyebrow">A LETTER FOR YOU / 加密文章</p><h1>凭密码，打开这一页</h1>
+      <p class="lede">输入作者提供的密码。解锁内容仅保留在当前页面中。</p>
+      <form class="unlock-form"><label for="article-password">文章密码</label><div class="unlock-input-row"><input id="article-password" type="password" required autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="unlock-status" disabled /><button type="submit" class="editorial-button" disabled>解锁阅读</button></div><button class="password-toggle" type="button" aria-controls="article-password" aria-pressed="false" disabled>显示密码</button></form>
+      <p id="unlock-status" class="unlock-status" role="status" aria-live="polite"></p><noscript><p>加密文章需要启用 JavaScript，并使用支持 Web Crypto 的浏览器。</p></noscript>
+    </div>
+    <article class="unlocked-article" hidden>
+      <div class="locked-toolbar"><span>已在本页解锁</span><button type="button" class="relock-button">重新锁定</button></div>
+      <header class="article-heading"><p class="eyebrow">PRIVATE READING</p><h1 tabindex="-1" class="protected-title"></h1><p class="article-description protected-description"></p><div class="article-meta protected-meta"></div></header>
+      <div class="article-layout"><div class="prose protected-body"></div></div><div class="locked-bottom"><button type="button" class="relock-button">结束阅读，重新锁定</button></div>
+    </article>
+  </section>
+  <script>
+    import { initializeProtectedReaders } from '../../lib/protected-reader';
+    initializeProtectedReaders();
+  </script>
+</Base>

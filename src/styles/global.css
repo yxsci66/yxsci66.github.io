@@ -1087,3 +1087,123 @@ pagefind-input {
 .search-container .pf-results {
   margin-top:26px
 }
+.editorial-card,.locked-reader,.comments-panel {
+  max-width:760px;
+  margin-inline:auto
+}
+.editorial-card {
+  border-top:1px solid var(--line);
+  padding:30px 0
+}
+.editorial-card p,.editorial-card ol {
+  margin-top:24px
+}
+.editorial-card strong {
+  overflow-wrap:anywhere
+}
+.editorial-note,.unlock-status,.locked-toolbar,.comments-panel p {
+  font-size:13px;
+  color:var(--muted)
+}
+.editorial-button,.relock-button {
+  display:inline-block;
+  background:var(--accent);
+  color:var(--paper);
+  border:1px solid var(--accent);
+  padding:11px 18px;
+  min-height:48px;
+  text-align:center
+}
+.editorial-button:hover {
+  color:white
+}
+.editorial-button:disabled {
+  opacity:.65;
+  cursor:wait
+}
+.locked-gate {
+  padding-bottom:50px
+}
+.locked-gate h1 {
+  font-size:clamp(28px,5vw,42px);
+  font-weight:500;
+  margin-top:18px
+}
+.unlock-form {
+  margin-top:32px
+}
+.unlock-form label {
+  display:block;
+  margin-bottom:9px;
+  font-size:14px
+}
+.unlock-input-row {
+  display:flex;
+  gap:12px
+}
+.unlock-input-row input {
+  min-width:0;
+  flex:1;
+  border:1px solid var(--line);
+  padding:10px 13px;
+  background:transparent;
+  color:var(--ink);
+  border-radius:0
+}
+.password-toggle {
+  border:0;
+  background:transparent;
+  color:var(--accent);
+  min-height:44px;
+  padding:10px 0;
+  text-decoration:underline;
+  text-underline-offset:4px
+}
+.unlock-status {
+  min-height:2em;
+  margin-top:10px
+}
+.locked-toolbar {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:var(--paper);
+  border-block:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0
+}
+.relock-button {
+  font-size:13px;
+  background:transparent;
+  color:var(--accent)
+}
+.locked-bottom {
+  padding-top:35px;
+  text-align:center
+}
+.comments-panel {
+  border-top:1px solid var(--line);
+  margin-top:40px;
+  padding-top:28px
+}
+.comments-panel h2 {
+  font-size:24px;
+  font-weight:500
+}
+.comments-panel p {
+  margin:10px 0 20px
+}
+[hidden] {
+  display:none!important
+}
+@media(max-width:600px) {
+  .unlock-input-row {
+    flex-direction:column
+  }
+  .locked-toolbar {
+    padding:8px 0
+  }
+}

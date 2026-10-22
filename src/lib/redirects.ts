@@ -1,10 +1,10 @@
 export interface Redirect { from: string; to: string }
-interface LegacyPost { id: string; data: { legacyPaths: string[] } }
+interface LegacyPost { id: string; data: { legacyPaths: string[]; category?: string; visibility?: string } }
 export function createRedirects(posts: LegacyPost[]): Redirect[] {
   const redirects: Redirect[] = [
     ...['2021', '2021/09', '2021/11', '2022', '2022/06'].map(part => ({ from: `/archives/${part}/`, to: '/archives/' })),
     { from: '/archive/', to: '/archives/' },
-    { from: '/categories/Engineering/', to: '/categories/engineering/' },
+    ...(posts.some(post => post.data.category === 'engineering' && (post.data.visibility ?? 'public') === 'public') ? [{ from: '/categories/Engineering/', to: '/categories/engineering/' }] : []),
     ...posts.flatMap(post => post.data.legacyPaths.map(from => ({ from, to: `/blog/${post.id}/` }))),
   ];
   const seen = new Set<string>();
