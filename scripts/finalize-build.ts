@@ -1,8 +1,11 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs';
 import { resolve, dirname, relative, sep } from 'node:path';
 import type { Redirect } from '../src/lib/redirects.ts';
+import { copyPreparedAssets } from './site-output.ts';
 
 const root = resolve('dist');
+if (process.env.HARLEN_PRODUCTION === '1' && !process.env.HARLEN_CONTENT_ROOT) throw new Error('Production requires prepared content');
+if (process.env.HARLEN_CONTENT_ROOT) copyPreparedAssets(process.env.HARLEN_CONTENT_ROOT, root);
 const manifest = resolve(root, 'build-legacy-redirects.json');
 const redirects = JSON.parse(readFileSync(manifest, 'utf8')) as Redirect[];
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]!));

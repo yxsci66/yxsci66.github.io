@@ -4,22 +4,41 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.33.2",
-  "engines": { "node": ">=22.22.0", "pnpm": ">=10" },
+  "engines": {
+    "node": ">=22.22.0",
+    "pnpm": ">=10"
+  },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
-    "build": "astro build && node --experimental-strip-types scripts/finalize-build.ts && pagefind --site dist",
+    "build": "node --experimental-strip-types scripts/prepare-static.ts && astro build && node --experimental-strip-types scripts/finalize-build.ts && node --experimental-strip-types scripts/build-search.ts",
     "preview": "astro preview --host 127.0.0.1",
     "test:e2e": "playwright test",
-    "test:drafts": "node --experimental-strip-types scripts/check-drafts.ts"
+    "test:drafts": "node --experimental-strip-types scripts/check-drafts.ts",
+    "test:editorial": "node --experimental-strip-types scripts/check-editorial.ts"
   },
-  "dependencies": { "astro": "6.4.8", "@astrojs/rss": "4.0.19", "@astrojs/sitemap": "3.7.4" },
-  "pnpm": { "onlyBuiltDependencies": ["esbuild", "sharp"] },
+  "dependencies": {
+    "@astrojs/rss": "4.0.19",
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "6.4.8",
+    "dompurify": "3.4.17",
+    "gray-matter": "4.0.3",
+    "marked": "18.1.1",
+    "sanitize-html": "2.18.1",
+    "yaml": "2.9.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
     "@playwright/test": "1.64.1",
     "@types/node": "^22.0.0",
+    "@types/sanitize-html": "2.16.2",
     "pagefind": "1.5.2",
     "typescript": "~5.9.3"
   }

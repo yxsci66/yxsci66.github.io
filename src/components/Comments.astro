@@ -1,0 +1,8 @@
+---
+import { comments, validCommentsConfig } from '../config/comments';
+import { commentsAllowed } from '../lib/publication';
+interface Props { articleId: string; data: { visibility?: string; commentsEnabled?: boolean; draft?: boolean } }
+const { articleId, data } = Astro.props;
+const enabled = commentsAllowed(data) && validCommentsConfig(comments);
+---
+{enabled && <section class="comments-panel" aria-label="文章评论" data-pagefind-ignore><h2>评论</h2><p>使用 GitHub 账号参与讨论。</p><script is:inline src="https://giscus.app/client.js" data-repo={comments.repo} data-repo-id={comments.repoId} data-category={comments.category} data-category-id={comments.categoryId} data-mapping="specific" data-term={articleId} data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script></section>}

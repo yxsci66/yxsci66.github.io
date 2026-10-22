@@ -1,10 +1,14 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { selectPublishedPosts } from './publication';
+import { selectPublishedPosts, selectRoutablePosts } from './publication';
 
 export type Post = CollectionEntry<'blog'>;
 
 export async function getPosts(): Promise<Post[]> {
   return selectPublishedPosts(await getCollection('blog'));
+}
+
+export async function getRoutablePosts(): Promise<Post[]> {
+  return selectRoutablePosts(await getCollection('blog'));
 }
 
 export function postUrl(post: Pick<Post, 'id'>): string {

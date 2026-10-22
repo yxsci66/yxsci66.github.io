@@ -1,22 +1,32 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { getPosts, postUrl, formatDate } from '../../lib/posts';
+import Comments from '../../components/Comments.astro';
+import { getPosts, getRoutablePosts, postUrl, formatDate } from '../../lib/posts';
 export async function getStaticPaths() {
-  const posts = await getPosts();
-  return posts.map((post, index) => ({ params: { id: post.id }, props: { post, newer: posts[index - 1], older: posts[index + 1] } }));
+  const publicPosts = await getPosts();
+  return (await getRoutablePosts()).map((post) => {
+    const index = publicPosts.findIndex(candidate => candidate.id === post.id);
+    return { params: { id: post.id }, props: { post, newer: index < 0 ? undefined : publicPosts[index - 1], older: index < 0 ? undefined : publicPosts[index + 1] } };
+  });
 }
 const { post, newer, older } = Astro.props;
 const { Content, headings } = await render(post);
+const isPublic = post.data.visibility === 'public';
 ---
-<Base title={post.data.title} description={post.data.description} article>
-  <article class="article-page">
-    <header class="article-heading" data-pagefind-ignore><a class="back-link" href="/blog/">← 全部文章</a><p class="eyebrow">THE JOURNAL</p><h1 data-pagefind-meta="title">{post.data.title}</h1><div class="article-meta"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>{post.data.category && <a href={`/categories/${encodeURIComponent(post.data.category)}/`}>{post.data.category}</a>}{post.data.updatedDate && <span>更新于 <time datetime={post.data.updatedDate.toISOString()}>{formatDate(post.data.updatedDate)}</time></span>}</div><p class="article-description">{post.data.description}</p><div class="post-tags">{post.data.tags.map((tag: string) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}</div></header>
+<Base title={post.data.title} description={post.data.description} article noindex={!isPublic}>
+  <article class="article-page" data-public-post={isPublic ? 'true' : undefined} data-pagefind-ignore={isPublic ? undefined : true}>
+    <header class="article-heading" data-pagefind-ignore>
+      <a class="back-link" href="/blog/">← 全部文章</a><p class="eyebrow">THE JOURNAL</p><h1 data-pagefind-meta="title">{post.data.title}</h1>
+      <div class="article-meta"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>{post.data.category && (isPublic ? <a href={`/categories/${encodeURIComponent(post.data.category)}/`}>{post.data.category}</a> : <span>{post.data.category}</span>)}{post.data.updatedDate && <span>更新于 <time datetime={post.data.updatedDate.toISOString()}>{formatDate(post.data.updatedDate)}</time></span>}</div>
+      <p class="article-description">{post.data.description}</p><div class="post-tags">{post.data.tags.map((tag: string) => isPublic ? <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a> : <span>#{tag}</span>)}</div>
+    </header>
     <div class="article-layout">
       {headings.length > 0 && <aside class="toc" data-pagefind-ignore><details open><summary>本文目录</summary><nav aria-label="本文目录"><ol>{headings.map(h => <li class:list={{ nested: h.depth > 2 }}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav></details></aside>}
-      <div class="prose" data-pagefind-body><Content /></div>
+      <div class="prose" data-pagefind-body={isPublic ? true : undefined}><Content /></div>
     </div>
     <nav class="post-pagination" aria-label="相邻文章" data-pagefind-ignore>{older ? <a href={postUrl(older)}><span>← 上一篇</span><strong>{older.data.title}</strong></a> : <div />}{newer ? <a href={postUrl(newer)}><span>下一篇 →</span><strong>{newer.data.title}</strong></a> : <div />}</nav>
+    <Comments articleId={post.data.articleId ?? post.id} data={post.data} />
   </article>
   <script>
     document.querySelectorAll<HTMLPreElement>('.prose pre').forEach(pre => {

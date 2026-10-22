@@ -8,14 +8,15 @@ mkdirSync(tempDirectory, { recursive: true });
 for (const variable of ['TEMP', 'TMP', 'TMPDIR']) process.env[variable] = tempDirectory;
 
 const channel = process.env.PLAYWRIGHT_CHANNEL || (!process.env.CI && process.platform === 'win32' && existsSync('C:/Program Files/Google/Chrome/Application/chrome.exe') ? 'chrome' : undefined);
+const previewUrl = `http://127.0.0.1:${process.env.PREVIEW_PORT || '4322'}`;
 
 export default defineConfig({
   testDir: './tests/e2e',
   outputDir: './.cache/playwright-results',
-  use: { baseURL: process.env.SITE_URL || 'http://127.0.0.1:4321', browserName: 'chromium', channel },
+  use: { baseURL: process.env.SITE_URL || previewUrl, browserName: 'chromium', channel },
   webServer: process.env.SITE_URL ? undefined : {
-    command: 'pnpm preview --port 4321',
-    url: 'http://127.0.0.1:4321',
-    reuseExistingServer: !process.env.CI,
+    command: `pnpm preview --port ${process.env.PREVIEW_PORT || '4322'}`,
+    url: previewUrl,
+    reuseExistingServer: false,
   },
 });
