@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return [...new Set(posts.flatMap(p => p.data.tags))].map(tag => ({ params: { tag }, props: { tag, posts: posts.filter(p => p.data.tags.includes(tag)) } }));
+}
+const { tag, posts } = Astro.props;
+---
+<Base title={`标签：${tag}`}><PageHeading eyebrow="BY TOPIC / 标签" title={`#${tag}`} description={`${posts.length} 篇相关记录`} /><PostList posts={posts} /><a class="back-link" href="/tags/">← 全部标签</a></Base>

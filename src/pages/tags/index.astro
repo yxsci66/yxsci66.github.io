@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+const tags = [...new Set(posts.flatMap(p => p.data.tags))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+---
+<Base title="标签"><PageHeading eyebrow="BY TOPIC / 由关键词出发" title="标签" description="相近的想法，在这里相遇。" /><ul class="taxonomy-list">{tags.map(tag => <li><a href={`/tags/${encodeURIComponent(tag)}/`}><span>#{tag}</span><span>{posts.filter(p => p.data.tags.includes(tag)).length} 篇 <span aria-hidden="true">↗</span></span></a></li>)}</ul><a class="back-link" href="/blog/">← 全部文章</a></Base>

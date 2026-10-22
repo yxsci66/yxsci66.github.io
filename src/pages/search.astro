@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeading from '../components/PageHeading.astro';
+---
+<Base title="搜索" description="搜索 Harlen's World 中的文章。"><PageHeading eyebrow="FIND A WORD / 站内搜索" title="搜索" description="输入关键词，寻找一篇文章或一个想法。" /><div class="search-container"><pagefind-config bundle-path="/pagefind/" lang="zh-CN"></pagefind-config><pagefind-input placeholder="搜索文章…" autofocus></pagefind-input><pagefind-summary></pagefind-summary><pagefind-results></pagefind-results><noscript><p>全文搜索需要启用 JavaScript。也可以从<a href="/archives/">文章归档</a>浏览全部内容。</p></noscript></div><link rel="stylesheet" href="/pagefind/pagefind-component-ui.css" /><script is:inline type="module" src="/pagefind/pagefind-component-ui.js"></script></Base>

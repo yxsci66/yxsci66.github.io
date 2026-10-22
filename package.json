@@ -9,9 +9,10 @@
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && node --experimental-strip-types scripts/finalize-build.ts && pagefind --site dist",
     "preview": "astro preview --host 127.0.0.1",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:drafts": "node --experimental-strip-types scripts/check-drafts.ts"
   },
   "dependencies": { "astro": "6.4.8", "@astrojs/rss": "4.0.19", "@astrojs/sitemap": "3.7.4" },
   "pnpm": { "onlyBuiltDependencies": ["esbuild", "sharp"] },
