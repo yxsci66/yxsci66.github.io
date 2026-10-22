@@ -32,7 +32,7 @@ async function scan(root: string, forbidden: string[] = [], forbiddenHashes: str
   }
   await walk();
   check(files['index.html']);
-  return Object.fromEntries(Object.entries(files).sort(([a], [b]) => a.localeCompare(b)));
+  return Object.fromEntries(Object.entries(files).sort(([a], [b]) => Buffer.compare(Buffer.from(a), Buffer.from(b))));
 }
 export async function sealOutput(root: string, forbidden: string[] = [], forbiddenHashes: string[] = []): Promise<void> {
   const files = await scan(root, forbidden, forbiddenHashes);
@@ -42,9 +42,11 @@ export async function verifyOutput(root: string): Promise<void> {
   const info = await lstat(path.join(root, MANIFEST));
   check(info.isFile() && !info.isSymbolicLink() && info.size < 4 * 1024 * 1024);
   const manifest = JSON.parse(await readFile(path.join(root, MANIFEST), 'utf8'));
-  check(manifest.version === 1 && manifest.files && typeof manifest.files === 'object');
+  check(manifest.version === 1 && manifest.files && typeof manifest.files === 'object' && !Array.isArray(manifest.files));
   const actual = await scan(root);
-  check(JSON.stringify(actual) === JSON.stringify(manifest.files));
+  const files = Object.keys(actual);
+  check(files.length === Object.keys(manifest.files).length);
+  for (const file of files) check(Object.hasOwn(manifest.files, file) && manifest.files[file] === actual[file]);
 }
 export function publicationAuditPolicy(inputs: PublishedInput[], access: Record<string, string>, currentMediaHashes: string[]): { forbidden: string[]; forbiddenHashes: string[] } {
   const publicHashes = new Set(inputs.filter((input) => ['public','unlisted'].includes(input.visibility)).flatMap((input) => input.snapshot.media.map((asset) => asset.sha256)));
